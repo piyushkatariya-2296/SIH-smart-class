@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
-  base: '/Prompt-Wars-Ch-4/',
+  base: '/SIH-smart-class/',
   server: {
     proxy: {
       '/api': {
