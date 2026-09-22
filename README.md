@@ -1,79 +1,81 @@
-# 🏟️ ArenaPulse 2026: FIFA World Cup Smart Stadium & AI Operations Hub
+# 🎓 SmartClass: AI Lecture-to-Notes & Remedial Learning Platform
 
-**ArenaPulse 2026** is a state-of-the-art, Generative AI-enabled stadium operations and fan experience platform designed to handle the massive logistical scale of the **FIFA World Cup 2026**.
-
-The application streamlines crowd flow, accessibility routing, crisis management, multilingual fan support, and ecological sustainability under a unified, high-fidelity dashboard. By catering to three distinct roles—**Fans**, **Venue Operations Staff (Organizers)**, and **Volunteers**—ArenaPulse creates a connected stadium ecosystem.
+**SmartClass** is a state-of-the-art, full-stack education platform designed to empower teachers and students through GenAI. It transcribes audio lectures, generates study resources, aggregates mastery metrics, and drafts personalized remedial materials (slide decks + PPTX downloads) for students who need additional assistance.
 
 ---
 
-## 🚀 Key Features & GenAI Capabilities
+## 🚀 Key Features
 
-### 1. 🤖 Gemini-Driven ArenaAI Copilot
-*   **Conversational Assistant**: A chatbot widget featuring simulated Gemini LLM responses with typing animations and markdown formatting.
-*   **Logistics Knowledge base**: Fans, volunteers, and operators can query seat directions, concession menus, transport delays, and emergency procedures.
-*   **Interactive Scenarios**: Features pre-loaded training prompts simulating high-stress situations (e.g., wheelchair navigation paths, extreme weather alerts, concession waste optimizations).
-
-### 2. 🗺️ Interactive Arena Flow & Heatmap
-*   **Live SVG Bowl**: A responsive vector map representing the stadium bowl with interactive sections (100s, 200s, and VIP Suites) and Entry/Exit gates.
-*   **Dynamic Heatmaps**: Sections color-code in real time based on simulated density (Green = Normal, Yellow = Medium, Red = Congested).
-*   **Logistical Analytics**: Clicking any section reveals specific queue times for entry gates, restrooms, food concessions, and displays a contextual **AI Navigation Recommendation** to guide fans away from bottlenecks.
-*   **Match Phase Simulations**: Switch between match phases—*Pre-match Ingress*, *Halftime Peak*, *Post-match Egress*, and *Emergency Evacuation*—to see crowd heatmaps and AI rerouting adapt dynamically.
-
-### 3. 🚨 GenAI Incident Command Panel (Operations)
-*   **Computer Vision Feed**: Monitors smart-camera alerts (e.g., escalator backup, trash container overflow) with instant AI suggestions.
-*   **AI Decision Planner**: Staff can log custom incidents (e.g., medical issues, security flags, facility leaks). The AI instantly analyzes the severity, assigns a priority rating, drafts a 4-step dispatch checklist, compiles volunteer megaphone scripts, and generates task cards.
-*   **One-Click Dispatch**: Seamlessly pushes the generated checklists to field volunteer handsets.
-
-### 4. ⚡ Predictive Sustainability Grid
-*   **Resource Metrics**: Real-time power load, water pressure, and waste diversion rate trackers.
-*   **AI Energy Optimization**: Operators toggle dynamic HVAC scaling in empty suites, smart faucet pressure during halftime surges, and tripling of recycling points to offset the tournament carbon footprint.
-
-### 5. 🗣️ Multilingual Fan Assist (Volunteers)
-*   **Interactive Translator**: Supports 8 tournament languages (Spanish, French, Arabic, German, Japanese, Portuguese, Korean, Chinese).
-*   **Dual-Screen Translations**: Translates fan ticket errors, lost children queries, and medical alerts into English for volunteers, while generating native-tongue guidance screens for fans.
-
-### 6. 🚲 Green Fan Challenge (Fans)
-*   **Transit Carbon Calculator**: Compares emissions and times of Metro, Shuttles, EV Rideshares, and Petrol Cars with AI routing tips.
-*   **Eco-Incentives**: Logging eco-friendly actions (reusing bottles, plant-based meals, recycling) awards points to unlock **FIFA digital Eco-Badges** and concession store coupons.
+1.  **🎙️ Classroom Lecture Capture**:
+    *   Start recording lectures directly from the browser mic with interactive waveform animations.
+    *   Manual upload backup for pre-recorded audio files.
+    *   Asynchronous background processing prevents HTTP request timeouts.
+2.  **🤖 GenAI Lecture-to-Notes**:
+    *   **Speech-to-Text**: Converts raw lecture audio into clean transcripts using Gemini or Whisper APIs.
+    *   **Study Guides**: Generates structured executive summaries, comprehensive study notes (markdown), and key takeaways.
+    *   **Interactive Quizzes**: Formulates 3-5 multiple-choice questions with answer checks and explanations.
+3.  **📊 Student Mastery Analytics**:
+    *   Teachers input quiz/assignment grades.
+    *   App calculates Mastery scores: $\text{Mastery } (\%) = \left( \frac{\sum \text{Score}}{\sum \text{Max Score}} \right) \times 100$.
+    *   Automatically flags students below **60%** with a "Needs Remedial Support" alert.
+4.  **💡 Automated Remedial Learning**:
+    *   Triggers LLM content generation for weak concepts.
+    *   Constructs simplified slide decks using analogies, step-by-step worked examples, and extra questions.
+    *   Renders slides in-app for studying.
+    *   Exports slides to a real **PowerPoint presentation (.pptx)** file client-side.
+5.  **👥 Role-Based Portals**:
+    *   **Teacher Suite**: Start recordings, grade students, view mastery sheets, and trigger remedial materials.
+    *   **Student Workspace**: Study notes, take interactive lecture quizzes, read assigned slides, and download PPTX.
+    *   **Admin Dashboard**: View institutional stats, subject mastery distributions (SVG graphs), and weak concept triggers.
 
 ---
 
 ## 🛠️ Architecture & Tech Stack
 
-*   **Framework**: React 19 (Hooks, Context, modular structure)
-*   **Build Tool**: Vite 8 (extremely fast hot module reloading and small production builds)
-*   **Styling**: Premium Vanilla CSS (custom Outfit Google font, glassmorphic card overlays, glowing indicator keyframes, custom toggle switches, and neon accents)
-*   **Icons**: Lucide React
-*   **AI Mock Engine**: Custom deterministic regex parser simulating Gemini Pro's contextual response capability.
+*   **Frontend**: React 19 + Tailwind CSS v4, Lucide React (Icons), `pptxgenjs` (PPTX compiler).
+*   **Backend**: Node.js + Express.js, Multer (audio upload).
+*   **Database**: PostgreSQL (Primary) + SQLite (automatic zero-config fallback if PG is offline).
+*   **AI Engine**: Google Gemini API / OpenAI API. (If no keys are provided, it falls back to a contextual mockup engine).
 
 ---
 
-## 💻 Local Setup & Build Instructions
+## 💻 Local Setup & Run Instructions
 
-1.  **Install dependencies**:
-    ```bash
-    npm install
-    ```
-2.  **Run Development Server**:
-    ```bash
-    npm run dev
-    ```
-3.  **Build for Production**:
-    ```bash
-    npm run build
-    ```
-    This compiles the app into the `dist/` directory ready for static hosting.
+### 1. Prerequisite Checklist
+*   Node.js (v18+) and npm installed.
+*   PostgreSQL running (Optional - system falls back to a local `smartclass.db` SQLite file if PostgreSQL is not available).
 
-4.  **Preview Production Bundle**:
-    ```bash
-    npm run preview
-    ```
+### 2. Environment Configuration
+Create a `.env` file in the `server/` directory:
 
----
+```env
+PORT=5000
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/smartclass
+GEMINI_API_KEY=your_gemini_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
+```
+> **Note:** If `GEMINI_API_KEY` and `OPENAI_API_KEY` are left blank, the app will run in **Mock AI Mode**. It will dynamically read your uploaded lecture title/description and generate contextual mock transcripts and notes, and generate detailed remedial math/science slides so you can fully test the application features immediately!
 
-## 🏅 Hackathon Submission Highlights (90+ Score Criteria)
+### 3. Installation
+Open two terminal windows:
 
-*   **Triple-Role Synergy**: Demonstrates a complete loop where volunteers report incidents, operators command AI plans, tasks deploy back to volunteers, and fans receive real-time rerouting directions.
-*   **Deep GenAI Integration**: Incorporates generative scripts, contextual translations, and logical command plans rather than a standard single-question chat window.
-*   **No Placeholders**: Contains a fully functional, interactive SVG map, live simulated values, and reward claims.
-*   **Rich Aesthetics**: Beautiful dark tech theme designed using modern HSL and variable CSS for maximum premium feel.
+#### Terminal A: Start Backend Server
+```bash
+cd server
+npm install
+npm start
+```
+*The database and seed data (users: `teacher1`, `student1`, `admin1`, and sample scores) will initialize on startup.*
+
+#### Terminal B: Start Frontend Development Server
+```bash
+# In the root project folder
+npm install
+npm run dev
+```
+
+### 4. Open in Browser
+Visit the development URL (usually `http://localhost:5173`).
+*   Log in as **Teacher** using username `teacher1`
+*   Log in as **Student** using username `student1`
+*   Log in as **Admin** using username `admin1`
